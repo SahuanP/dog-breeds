@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Home.module.css";
-import DogBreed from "./DogBreed";
+import BreedList from "../components/BreedList";
 
 export default function Home() {
   return (
@@ -9,16 +9,7 @@ export default function Home() {
         <h1>App Raças de Cachorros</h1>
       </div>
 
-      <div className={styles.BreedContentBox}>
-        <DogBreed />
-        <DogBreed />
-        <DogBreed />
-        <DogBreed />
-        <DogBreed />
-        <DogBreed />
-        <DogBreed />
-        <DogBreed />
-      </div>
+      <BreedList />
     </div>
   );
 }

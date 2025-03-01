@@ -1,0 +1,32 @@
+.BreedCard {
+  padding: 1.3rem;
+  background-color: var(--dark-gray);
+  border-radius: 25px;
+  color: var(--off-white);
+  margin: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+
+  & .BreedImgBox {
+    width: 100%;
+    height: 90%;
+    & img {
+      object-fit: cover;
+      width: 100%;
+      height: 90%;
+      border-radius: 20px;
+    }
+  }
+}
+
+.BreedInfo {
+  text-align: center;
+}
+
+.breedListContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1rem;
+}
