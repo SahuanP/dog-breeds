@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./BreedList.module.css";
+import { Link } from "react-router-dom";
 
 const DogAPI_URL =
   "https://api.thedogapi.com/v1/breeds?api_key=live_CYFI0fcNwMxpsfu1eDnHxCAngHfAqbOmkwQMoRTKOnxSbknZSvscntnojahlqGB0";
-const DogImgAPI_URL = "https://images.dog.ceo/breeds/";
+// const DogImgAPI_URL = "https://images.dog.ceo/breeds/";
 
 export default function BreedList() {
   const [breeds, setBreeds] = useState([]);
@@ -29,19 +30,21 @@ export default function BreedList() {
       <section className={styles.breedListContainer}>
         {breeds.map((breed) => {
           return (
-            <div className={styles.BreedCard} key={breed.id}>
-              <div className={styles.BreedImgBox}>
-                <img
-                  src={breed.image.url}
-                  alt="Imagem de um cachorro da raça"
-                />
-              </div>
+            <Link to={`/breed/${breed.id}`}>
+              <div className={styles.BreedCard} key={breed.id}>
+                <div className={styles.BreedImgBox}>
+                  <img
+                    src={breed.image.url}
+                    alt="Imagem de um cachorro da raça"
+                  />
+                </div>
 
-              <div className={styles.BreedInfo}>
-                <h2>{breed.name}</h2>
-                <span>{breed.life_span}</span>
+                <div className={styles.BreedInfo}>
+                  <h2>{breed.name}</h2>
+                  <span>{breed.life_span}</span>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </section>

@@ -3,6 +3,7 @@
   --off-white: #ebebeb;
   --black: #000000;
   --dark-gray: #222222;
+  --light-gray: #4e4e4e;
 }
 
 * {
@@ -18,4 +19,5 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--light-gray);
 }
