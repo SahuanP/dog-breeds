@@ -8,29 +8,43 @@ const DogAPI_URL =
 
 export default function BreedList() {
   const [breeds, setBreeds] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   //   const [breedsImg, setBreedsImg] = useState([]);
 
   useEffect(() => {
-    fetch(DogAPI_URL)
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchBreeds = async () => {
+      try {
+        const response = await fetch(DogAPI_URL);
+
+        const data = await response.json();
+
         console.log(data);
         setBreeds(data);
-      });
-    // fetch(DogImgAPI_URL)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setBreedsImg(data);
-    //   });
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+      // fetch(DogImgAPI_URL)
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     console.log(data);
+      //     setBreedsImg(data);
+      //   });
+    };
+    fetchBreeds();
   }, []);
+
+  if (loading) return <p className={styles.loading}>Carregando...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div>
       <section className={styles.breedListContainer}>
         {breeds.map((breed) => {
           return (
-            <Link to={`/breed/${breed.id}`}>
+            <Link to={`/breed/${breed.id}`} className={styles.link}>
               <div className={styles.BreedCard} key={breed.id}>
                 <div className={styles.BreedImgBox}>
                   <img
